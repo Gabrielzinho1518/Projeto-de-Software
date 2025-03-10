@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+public class Hamburgueria {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Exibir menu de ingredientes
+        System.out.println("Escolha seus ingredientes para o hambúrguer:");
+        System.out.println("1 - Carne");
+        System.out.println("2 - Queijo");
+        System.out.println("3 - Bacon");
+        System.out.println("4 - Alface");
+        System.out.println("5 - Tomate");
+        System.out.println("6 - Sem ingredientes extras (somente carne e pão)");
+        
+        // Receber a escolha dos ingredientes
+        System.out.print("Digite os números dos ingredientes escolhidos (separados por espaço): ");
+        String ingredientesInput = scanner.nextLine();
+        String[] ingredientes = ingredientesInput.split(" ");
+        
+        // Exibir menu de bebidas
+        System.out.println("\nEscolha sua bebida:");
+        System.out.println("1 - Refrigerante");
+        System.out.println("2 - Suco");
+        System.out.println("3 - Água");
+        
+        // Receber a escolha da bebida
+        System.out.print("Digite o número da bebida escolhida: ");
+        int bebidaEscolhida = scanner.nextInt();
+        
+        // Processar e exibir o pedido
+        System.out.println("\nSeu pedido foi registrado!");
+        System.out.println("Ingredientes escolhidos:");
+        for (String ingrediente : ingredientes) {
+            switch (ingrediente) {
+                case "1":
+                    System.out.println("- Carne");
+                    break;
+                case "2":
+                    System.out.println("- Queijo");
+                    break;
+                case "3":
+                    System.out.println("- Bacon");
+                    break;
+                case "4":
+                    System.out.println("- Alface");
+                    break;
+                case "5":
+                    System.out.println("- Tomate");
+                    break;
+                case "6":
+                    System.out.println("- Sem ingredientes extras");
+                    break;
+                default:
+                    System.out.println("- Ingrediente inválido");
+            }
+        }
+
+        String bebida = "";
+        switch (bebidaEscolhida) {
+            case 1:
+                bebida = "Refrigerante";
+                break;
+            case 2:
+                bebida = "Suco";
+                break;
+            case 3:
+                bebida = "Água";
+                break;
+            default:
+                bebida = "Bebida inválida";
+        }
+        System.out.println("Bebida escolhida: " + bebida);
+
+        scanner.close();
+    }
+}
