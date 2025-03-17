@@ -1,0 +1,118 @@
+package pacote;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
+public class TelaPedido extends JFrame {
+    private DefaultListModel<Produto> modelListaProdutos;
+    private JList<Produto> listaProdutos;
+    private DefaultListModel<Produto> modelListaPedido;
+    private JList<Produto> listaPedido;
+    private JButton btnAdicionar, btnFinalizar, btnRemover;
+
+    public TelaPedido(List<Produto> produtos) {
+        setTitle("Fazer Pedido");
+        setSize(500, 350);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        // Lista de produtos disponíveis
+        modelListaProdutos = new DefaultListModel<>();
+        for (Produto p : produtos) {
+            if (p.isDisponivel()) {
+                modelListaProdutos.addElement(p);
+            }
+        }
+        listaProdutos = new JList<>(modelListaProdutos);
+        JScrollPane scrollProdutos = new JScrollPane(listaProdutos);
+
+        // Lista de produtos do pedido
+        modelListaPedido = new DefaultListModel<>();
+        listaPedido = new JList<>(modelListaPedido);
+        JScrollPane scrollPedido = new JScrollPane(listaPedido);
+
+        JPanel painelEsquerda = new JPanel(new BorderLayout());
+        painelEsquerda.add(new JLabel("Produtos Disponíveis:"), BorderLayout.NORTH);
+        painelEsquerda.add(scrollProdutos, BorderLayout.CENTER);
+
+        JPanel painelDireita = new JPanel(new BorderLayout());
+        painelDireita.add(new JLabel("Seu Pedido:"), BorderLayout.NORTH);
+        painelDireita.add(scrollPedido, BorderLayout.CENTER);
+
+        // Botão para adicionar produto ao pedido
+        btnAdicionar = new JButton("Adicionar ao Pedido");
+        btnAdicionar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Produto selecionado = listaProdutos.getSelectedValue();
+                if (selecionado != null) {
+                    modelListaPedido.addElement(selecionado);
+                }
+            }
+        });
+
+        // Botão para finalizar pedido
+        btnFinalizar = new JButton("Finalizar Pedido");
+        btnFinalizar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (modelListaPedido.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Seu pedido está vazio!");
+                    return;
+                }
+
+                StringBuilder resumo = new StringBuilder("Resumo do Pedido:\n");
+                double total = 0;
+                for (int i = 0; i < modelListaPedido.size(); i++) {
+                    Produto p = modelListaPedido.getElementAt(i);
+                    resumo.append(p).append("\n");
+                    total += p.getPreco();
+                }
+                resumo.append("\nTotal: R$").append(String.format("%.2f", total));
+
+                JOptionPane.showMessageDialog(null, resumo.toString());
+            }
+        });
+
+        // Botão para remover produto do pedido
+        btnRemover = new JButton("Remover Produto");
+        btnRemover.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Produto selecionado = listaPedido.getSelectedValue();
+                if (selecionado != null) {
+                    modelListaPedido.removeElement(selecionado);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione um produto para remover.");
+                }
+            }
+        });
+
+        // Painel de Botões
+        JPanel painelBotoes = new JPanel(new GridLayout(3, 1));
+        painelBotoes.add(btnAdicionar);
+        painelBotoes.add(btnFinalizar);
+        painelBotoes.add(btnRemover);
+
+        add(painelEsquerda, BorderLayout.WEST);
+        add(painelDireita, BorderLayout.CENTER);
+        add(painelBotoes, BorderLayout.SOUTH);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        // Apenas para teste, aqui você pode instanciar alguns produtos com preços definidos
+        List<Produto> produtos = List.of(
+            new Produto("Hambúrguer de Carne", 25.0, "Hambúrguer", true),
+            new Produto("Refrigerante de Cola", 10.0, "Bebida", true),
+            new Produto("Refrigerante de Laranja", 10.0, "Bebida", true),
+            new Produto("Suco de Laranja", 8.0, "Bebida", true),
+            new Produto("Suco de Uva", 8.0, "Bebida", true),
+            new Produto("Torta de Chocolate", 15.0, "Sobremesa", true),
+            new Produto("Sagu", 12.0, "Sobremesa", true),
+            new Produto("Arroz de Leite", 12.0, "Sobremesa", true)
+        );
+        new TelaPedido(produtos);
+    }
+}
