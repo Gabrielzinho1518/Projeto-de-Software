@@ -1,0 +1,128 @@
+package pacote;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CadastroProduto extends JFrame {
+    private JTextField txtNome, txtPreco;
+    private JComboBox<String> cbCategoria;
+    private DefaultListModel<Produto> modelLista;
+    private JList<Produto> listaProdutos;
+    private List<Produto> produtos;
+
+    public CadastroProduto() {
+        setTitle("Cadastro de Produtos");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        produtos = new ArrayList<>();
+        modelLista = new DefaultListModel<>();
+        listaProdutos = new JList<>(modelLista);
+
+        JPanel painelCadastro = new JPanel(new GridLayout(4, 2));
+        painelCadastro.add(new JLabel("Nome:"));
+        txtNome = new JTextField();
+        painelCadastro.add(txtNome);
+
+        painelCadastro.add(new JLabel("Preço:"));
+        txtPreco = new JTextField();
+        painelCadastro.add(txtPreco);
+
+        painelCadastro.add(new JLabel("Categoria:"));
+        cbCategoria = new JComboBox<>(new String[]{"Hambúrguer", "Bebida", "Sobremesa"});
+        painelCadastro.add(cbCategoria);
+
+        JButton btnAdicionar = new JButton("Adicionar");
+        btnAdicionar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                adicionarProduto();
+            }
+        });
+
+        painelCadastro.add(btnAdicionar);
+        add(painelCadastro, BorderLayout.NORTH);
+
+        add(new JScrollPane(listaProdutos), BorderLayout.CENTER);
+        setVisible(true);
+    }
+
+    private void adicionarProduto() {
+        String nome = txtNome.getText().toLowerCase();
+        String precoStr = txtPreco.getText();
+        String categoria = (String) cbCategoria.getSelectedItem();
+
+        if (nome.isEmpty() || precoStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
+            return;
+        }
+
+        try {
+            double preco = Double.parseDouble(precoStr);
+
+            // Lista de bebidas alcoólicas proibidas
+            String[] bebidasProibidas = {"cerveja", "vodka", "whisky", "tequila", "rum", "conhaque", "licor", "champanhe", "cachaça"};
+
+            // Adicionando sucos à categoria Bebida
+            String[] sucosPermitidos = {"suco de laranja", "suco de limão", "suco de uva"};
+
+            // Verificando se a bebida é alcoólica ou um suco permitido
+            if (categoria.equals("Bebida")) {
+                for (String bebida : bebidasProibidas) {
+                    if (nome.contains(bebida)) {
+                        JOptionPane.showMessageDialog(this, "Bebidas alcoólicas não são permitidas!");
+                        return;
+                    }
+                }
+
+                // Verificando se é um suco permitido
+                boolean sucoPermitido = false;
+                for (String suco : sucosPermitidos) {
+                    if (nome.contains(suco)) {
+                        sucoPermitido = true;
+                        break;
+                    }
+                }
+
+                if (!sucoPermitido && !nome.contains("suco")) {
+                    JOptionPane.showMessageDialog(this, "Apenas sucos permitidos (laranja, limão, uva)!");
+                    return;
+                }
+            }
+
+            // Adicionando sobremesas
+            String[] sobremesasPermitidas = {"arroz doce", "sagu"};
+            boolean sobremesaPermitida = false;
+            if (categoria.equals("Sobremesa")) {
+                for (String sobremesa : sobremesasPermitidas) {
+                    if (nome.contains(sobremesa)) {
+                        sobremesaPermitida = true;
+                        break;
+                    }
+                }
+
+                if (!sobremesaPermitida && !nome.contains("arroz doce") && !nome.contains("sagu")) {
+                    JOptionPane.showMessageDialog(this, "Sobremesas permitidas: arroz doce, sagu.");
+                    return;
+                }
+            }
+
+            Produto produto = new Produto(txtNome.getText(), preco, categoria, sobremesaPermitida);
+            produtos.add(produto);
+            modelLista.addElement(produto);
+            txtNome.setText("");
+            txtPreco.setText("");
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Preço inválido!");
+        }
+    }
+
+    public static void main(String[] args) {
+        new CadastroProduto();
+    }
+}
