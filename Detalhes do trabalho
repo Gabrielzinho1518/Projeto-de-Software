@@ -1,0 +1,5 @@
+- Histórico dos pedidos 
+- fazer ticket do pedido para a cozinha, exemplo: "pdf"
+- adicionar 10 % sobre o total da conta para o garçom 
+- função de habilitar e desabilitar itens
+- cada caso de uso, precisa ter um caso de sequencia e um caso de classes. 
