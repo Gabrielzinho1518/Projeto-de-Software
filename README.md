@@ -35,7 +35,7 @@ Listar pedidos: visualizar todos os pedidos feitos, com filtro por status
 1. Instale os pré-requisitos abaixo.
 2. Abra a pasta do projeto no **VS Code**.
 3. Compile com `Ctrl + Shift + B` (se configurado).
-4. Rode o arquivo `HelloApplication.java` (Interface do Gerente).
+4. Rode primeiro o arquivo `RestauranteApplication.java` e logo em seguida o arquivo `HelloApplication.java`.
 
 ---
 
@@ -43,11 +43,29 @@ Listar pedidos: visualizar todos os pedidos feitos, com filtro por status
 
 - [Java JDK 17+](https://www.oracle.com/java/technologies/javase-downloads.html)  
 - [JavaFX SDK](https://gluonhq.com/products/javafx/)  
-- [VS Code](https://code.visualstudio.com/)
+- Qualquer IDE [VS Code](https://code.visualstudio.com/)
+- [PostGreSQL](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
 
 **Extensões recomendadas:**
 - Java Extension Pack  
 - JavaFX Support (opcional)
+
+---
+
+## ▶️ Como Executar
+
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/ThiagoMarzari/projeto-software.git
+   ```
+2. Compile os arquivos:
+   ```bash
+   javac `RestauranteApplication.java` e `HelloApplication.java`:.java
+   ```
+3. Execute a interface gráfica:
+   ```bash
+   java HelloApplication.java
+   ```
 
 ---
 
@@ -60,12 +78,12 @@ Listar pedidos: visualizar todos os pedidos feitos, com filtro por status
 ## Diagramas de Classe:
   
 - Funcionário:
-  
-![DiagramaDeClasseFuncionario](https://github.com/user-attachments/assets/74170ce2-d838-4c35-a5c8-5970026962e3)
+
+![DiagramaDeClasseFuncionario](https://github.com/user-attachments/assets/cfbce715-c2b5-426f-970d-7e43f27e76ef)
 
 - Cliente: 
 
-![DiagramaDeClasseCliente](https://github.com/user-attachments/assets/ed04a772-61aa-4e1b-b3fd-1babc8984ae7)
+![DiagramaDeClasseCliente](https://github.com/user-attachments/assets/c68658d6-b571-47a7-9a83-58dc7f814899)
 
 ## Diagramas de Sequência:
 
@@ -83,12 +101,11 @@ Listar pedidos: visualizar todos os pedidos feitos, com filtro por status
 
 - **Fazer Pedido:**
 
-![DiagramaDeSequenciaFazerPedido](https://github.com/user-attachments/assets/020a7fbf-c204-4d06-8a3c-71a0cbf14067)
-
+![DiagramaDeSequenciaFazerPedido](https://github.com/user-attachments/assets/8084be99-88ff-4889-86f8-1c4033e9cf3d)
 
 - **Backup do Pedido:**
 
-![DiagramaDeSequenciaBackupDoPedido](https://github.com/user-attachments/assets/17530f0b-04c2-4447-8a11-c2b12598d5ca)
+![DiagramaDeSequenciaBackupDoPedido](https://github.com/user-attachments/assets/ab1c9303-2546-4ac5-b10d-c6b773d8cd54)
 
 ---
 
@@ -161,13 +178,6 @@ Listar pedidos: visualizar todos os pedidos feitos, com filtro por status
 │                           └── 📁 views
 
 ```
----
-
-## 🖼️ Interface do Sistema
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/e6037b9e-e56a-4f63-a686-77e27fdc0642" alt="Hamburgueria" width="600"/>
-</p>
 
 ## 👨‍💻 Autores
 

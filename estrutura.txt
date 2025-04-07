@@ -1,0 +1,79 @@
+Listagem de caminhos de pasta
+O n£mero de s‚rie do volume ‚ 7EB6-0112
+C:.
+ÃÄÄÄ.idea
+ÃÄÄÄbackend
+³   ÃÄÄÄ.vscode
+³   ÀÄÄÄrestaurante
+³       ÃÄÄÄ.mvn
+³       ³   ÀÄÄÄwrapper
+³       ÃÄÄÄsrc
+³       ³   ÃÄÄÄmain
+³       ³   ³   ÃÄÄÄjava
+³       ³   ³   ³   ÀÄÄÄcom
+³       ³   ³   ³       ÀÄÄÄexample
+³       ³   ³   ³           ÀÄÄÄrestaurante
+³       ³   ³   ³               ÃÄÄÄcontroller
+³       ³   ³   ³               ÃÄÄÄdto
+³       ³   ³   ³               ÃÄÄÄmodel
+³       ³   ³   ³               ÃÄÄÄrepository
+³       ³   ³   ³               ÀÄÄÄservice
+³       ³   ³   ÀÄÄÄresources
+³       ³   ÀÄÄÄtest
+³       ³       ÀÄÄÄjava
+³       ³           ÀÄÄÄcom
+³       ³               ÀÄÄÄexample
+³       ³                   ÀÄÄÄrestaurante
+³       ÀÄÄÄtarget
+³           ÃÄÄÄclasses
+³           ³   ÀÄÄÄcom
+³           ³       ÀÄÄÄexample
+³           ³           ÀÄÄÄrestaurante
+³           ³               ÃÄÄÄcontroller
+³           ³               ÃÄÄÄdto
+³           ³               ÃÄÄÄmodel
+³           ³               ÃÄÄÄrepository
+³           ³               ÀÄÄÄservice
+³           ÃÄÄÄgenerated-sources
+³           ³   ÀÄÄÄannotations
+³           ÃÄÄÄgenerated-test-sources
+³           ³   ÀÄÄÄtest-annotations
+³           ÀÄÄÄtest-classes
+³               ÀÄÄÄcom
+³                   ÀÄÄÄexample
+³                       ÀÄÄÄrestaurante
+ÀÄÄÄfrontend
+    ÀÄÄÄrestaurante
+        ÃÄÄÄ.idea
+        ÃÄÄÄ.mvn
+        ³   ÀÄÄÄwrapper
+        ÃÄÄÄsrc
+        ³   ÀÄÄÄmain
+        ³       ÃÄÄÄjava
+        ³       ³   ÀÄÄÄcom
+        ³       ³       ÀÄÄÄthiago
+        ³       ³           ÀÄÄÄrestaurante
+        ³       ³               ÃÄÄÄcontrollers
+        ³       ³               ÃÄÄÄenums
+        ³       ³               ÃÄÄÄmodels
+        ³       ³               ÃÄÄÄservices
+        ³       ³               ÀÄÄÄutils
+        ³       ÀÄÄÄresources
+        ³           ÀÄÄÄcom
+        ³               ÀÄÄÄthiago
+        ³                   ÀÄÄÄrestaurante
+        ³                       ÃÄÄÄstyles
+        ³                       ÀÄÄÄviews
+        ÀÄÄÄtarget
+            ÃÄÄÄclasses
+            ³   ÀÄÄÄcom
+            ³       ÀÄÄÄthiago
+            ³           ÀÄÄÄrestaurante
+            ³               ÃÄÄÄcontrollers
+            ³               ÃÄÄÄenums
+            ³               ÃÄÄÄmodels
+            ³               ÃÄÄÄservices
+            ³               ÃÄÄÄstyles
+            ³               ÃÄÄÄutils
+            ³               ÀÄÄÄviews
+            ÀÄÄÄtest-classes
